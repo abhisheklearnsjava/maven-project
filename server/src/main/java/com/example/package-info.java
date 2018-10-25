@@ -2,4 +2,4 @@
 * This is a package
 *
 */
-package com.example.
+package com.example;
