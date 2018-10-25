@@ -1,6 +1,7 @@
 package com.example;
 
 /**
+ * @author Trainer
  * This is a class.
  */
 public class Greeter {
@@ -13,8 +14,8 @@ public class Greeter {
   }
 
   /**
-   *@param String
-   *@return String
+   *@param someone
+   *@return greeting method
    */
   public final String greet(final String someone) {
     return String.format("Hello, %s!", someone);
