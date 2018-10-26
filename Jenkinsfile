@@ -1,15 +1,15 @@
-pipeline {
+eline {
     agent any
-
-    parameters {
+    
+    parameters { 
          string(name: 'tomcat_dev', defaultValue: '18.223.162.196', description: 'Staging Server')
-         string(name: 'tomcat_prod', defaultValue: '18.191.140.118', description: 'Production Server')
-    }
-
+         string(name: 'tomcat_prod', defaultValue: '18.223.162.196', description: 'Production Server')
+    } 
+ 
     triggers {
-         pollSCM('* * * * *')
+         pollSCM('* * * * *') // Polling Source Control
      }
-
+ 
 stages{
         stage('Build'){
             steps {
@@ -22,7 +22,7 @@ stages{
                 }
             }
         }
-
+ 
         stage ('Deployments'){
             parallel{
                 stage ('Deploy to Staging'){
@@ -30,13 +30,13 @@ stages{
                         bat "winscp -i /mywork/jenkinHandson/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                     }
                 }
-
+ 
                 stage ("Deploy to Production"){
                     steps {
                         bat "winscp -i /mywork/jenkinHandson/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
                 }
             }
-        } 	
+        }
     }
 }
