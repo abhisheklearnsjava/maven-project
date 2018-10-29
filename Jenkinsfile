@@ -27,7 +27,7 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        bat 'winscp /command "open sftp://ec2-user@13.59.150.60/ -privatekey=D:/mywork/jenkinHandson/puttygen-key.ppk" "put **/target/*.war /var/lib/tomcat7/webapps/" "exit"'
+                        bat 'winscp /command "open sftp://ec2-user@13.59.150.60/ -privatekey=D:/mywork/jenkinHandson/puttygen-key.ppk" "put **/webapp/target/*.war /var/lib/tomcat7/webapps/" "exit"'
                     }
                 }
  
