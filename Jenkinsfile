@@ -28,13 +28,13 @@ stages{
                 stage ('Deploy to Staging'){
                     steps {
 					    bat "cd"
-                        bat 'winscp /command "open sftp://ec2-user@13.59.150.60/ -privatekey=D:/mywork/jenkinHandson/puttygen-key.ppk" "put C:\Users\Abhishek_S30\.jenkins\workspace\fully-automated-aws\webapp\target\*.war /var/lib/tomcat7/webapps/" "exit"'
+                        bat 'winscp /command "open sftp://ec2-user@13.59.150.60/ -privatekey=D:/mywork/jenkinHandson/puttygen-key.ppk" "put C:/Users/Abhishek_S30/.jenkins/workspace/fully-automated-aws/webapp/target/*.war /var/lib/tomcat7/webapps/" "exit"'
                     }
                 }
  
                 stage ("Deploy to Production"){
                     steps {
-                        bat 'winscp /command "open sftp://ec2-user@18.191.210.153/ -privatekey=D:/mywork/jenkinHandson/puttygen-key.ppk" "put C:\Users\Abhishek_S30\.jenkins\workspace\fully-automated-aws\webapp\target\*.war /var/lib/tomcat7/webapps/" "exit"'
+                        bat 'winscp /command "open sftp://ec2-user@18.191.210.153/ -privatekey=D:/mywork/jenkinHandson/puttygen-key.ppk" "put C:/Users/Abhishek_S30/.jenkins/workspace/fully-automated-aws/webapp/target/*.war /var/lib/tomcat7/webapps/" "exit"'
                     }
                 }
             }
