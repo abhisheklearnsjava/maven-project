@@ -27,13 +27,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        bat "winscp **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps privatekey=D:/mywork/jenkinHandson/tomcat-demo.pem"
+                        bat 'winscp /command "open sftp://ec2-user@${params.tomcat_dev}/ -privatekey=D:/mywork/jenkinHandson/puttygen-key.ppk" "put **/target/*.war /var/lib/tomcat7/webapps/" "exit"'
                     }
                 }
  
                 stage ("Deploy to Production"){
                     steps {
-                        bat "winscp **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps privatekey=D:/mywork/jenkinHandson/tomcat-demo.pem"
+                        bat 'winscp /command "open sftp://ec2-user@${params.tomcat_prod}/ -privatekey=D:/mywork/jenkinHandson/puttygen-key.ppk" "put **/target/*.war /var/lib/tomcat7/webapps/" "exit"'
                     }
                 }
             }
