@@ -27,13 +27,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        bat "winscp privatekey=D:/mywork/jenkinHandson/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+                        bat "winscp **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps privatekey=D:/mywork/jenkinHandson/tomcat-demo.pem"
                     }
                 }
  
                 stage ("Deploy to Production"){
                     steps {
-                        bat "winscp -i privatekey=D:/mywork/jenkinHandson/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
+                        bat "winscp **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps privatekey=D:/mywork/jenkinHandson/tomcat-demo.pem"
                     }
                 }
             }
